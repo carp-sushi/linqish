@@ -1,4 +1,4 @@
-.PHONY: all format build test clean
+.PHONY: all format build test clean repl
 
 all: format build test
 
@@ -13,3 +13,6 @@ test:
 
 clean:
 	rm -rf index.js output .spago
+
+repl:
+	spago repl
