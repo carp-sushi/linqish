@@ -91,12 +91,12 @@ main = do
   runTest do
     suite "Linqish tests" do
       test "select_ returns all rows" do
-        Assert.equal (selectAll tableA) tableA
+        Assert.equal tableA (selectAll tableA)
       test "select_ with where_ filters rows" do
         let expected = [ { id: 4, fk: 1, active: true }, { id: 2, fk: 3, active: true } ]
-        Assert.equal (selectActives tableB) expected
+        Assert.equal expected (selectActives tableB)
       test "select_ with join_ joins all rows" do
-        Assert.equal (joinTables tableA tableB) (zip tableA tableB)
+        Assert.equal (zip tableA tableB) (joinTables tableA tableB)
       test "select_ with join_ and where_ joins and filters" do
         let q = activeNames tableA tableB
-        Assert.equal (runQuery q) [ "row 1", "row 3" ]
+        Assert.equal [ "row 1", "row 3" ] (runQuery q)
